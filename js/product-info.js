@@ -8,7 +8,8 @@ const URLcomment = `https://japceibal.github.io/emercado-api/products_comments/$
 
 let infoProduct = []; // array con data global
 let comments = []; // array global
-const container = document.getElementById("cont");
+const containerInfo = document.getElementById("cont");
+ const containerComments = document.getElementById("contComments");
 
 //solicitud para obtener la informacion de dicho producto(segun su catId) 
 async function getInfoProduct() {
@@ -54,12 +55,12 @@ function showInfoProduct(objet) {
             </div>
             
         `;
-    container.innerHTML += template
+    containerInfo.innerHTML += template
   
 }
 //muestra las imagenes, dependiendo del largo del array o la cantidad de imagenes que contiene cuantas presenta
 function showImg(objet) {
-    let template;
+    let template = `<p>Imagenes Ilustrativas</p> `;
      const arrayImg = objet.images;
 
      for (let i= 0; i < arrayImg.length; i++) {
@@ -71,12 +72,12 @@ function showImg(objet) {
             </div>
             `;
          }
-    container.innerHTML += template
+    containerInfo.innerHTML += template
 }
 //muestra los comentarios 
 function showComments(array) {
 
-    let template    
+    let template = `<h2>Comentarios</h2>`;   
    for (let i= 0; i < array.length; i++) {
        const element = array[i];
        template += 
@@ -92,10 +93,37 @@ function showComments(array) {
             </div>
             `;
        }
-    container.innerHTML += template;
+    containerComments.innerHTML += template;
     
 }
+// cuando se simule el envío del comentario, intenta agregarlo cómo un comentario más de los mostrados referentes al producto.
+const btn = document.getElementById("submit"); //boton submit
+btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const comment = document.getElementById("opinion").value; //textarea
+    const score = document.getElementById("puntuacion").value; //select
+    let template = 'Comentario prueba' //aun no hice el login, por ello solo pongo los datos que puedo tomar, luego que lo haga llamo los datos del localstorage y puedo obtener el usuario que dio el comentario
+    
+   
+     template = 
+            `
+             <div class="card-body">
+             <p>Pepito- 5/03/2023- ${score}</p> //cambiar de string a number al mostrar en pantalla
+             <span class="fa fa-star checked"></span>
+             <span class="fa fa-star checked"></span>
+             <span class="fa fa-star checked"></span>
+             <span class="fa fa-star"></span>
+             <span class="fa fa-star"></span>
+             <p>${comment}</p>
+            </div>
+            `;
+    containerComments.innerHTML += template;
 
+
+
+
+
+});
 
 
 document.addEventListener("DOMContentLoaded", getInfoProduct());
