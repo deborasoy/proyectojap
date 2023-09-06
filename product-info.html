@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -39,8 +40,12 @@
   <main>
     <div class="container" id="cont">
       </div>
+     
+      <div class="container" id="contComments">
+      </div>
+      
       <div>
-        <p>Comentarios</p>
+        <p>Comentar</p>
         <label for="opinion">Tu opinion</label>
         <textarea name="opinion" id="opinion" cols="30" rows="10"></textarea>
         <label for="puntuacion">Tu puntuacion</label>
@@ -53,7 +58,7 @@
             <option value="cinco">5</option>
           </select>
         
-        <input type="submit" value="enviar">
+        <input type="submit" value="enviar" id="submit">
       </div>
   </main>
   <footer class="text-muted">
